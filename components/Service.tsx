@@ -10,19 +10,19 @@ const services = [
     title: 'Social Media Marketing',
     description:
       'Harness the full potential of social platforms to build meaningful relationships and grow your brand. We craft data driven strategies and engaging content to keep your audience connected, loyal, and ready to act.',
-    image: '/V0.PNG',
+    image: '/V0.png',
   },
   {
     title: 'Performance Marketing',
     description:
       'Drive measurable growth with data backed ad strategies that maximize ROI and reach your ideal audience effectively. From paid search to social ads, we fine tune every campaign for peak performance.',
-    image: '/V1.PNG',
+    image: '/V1.png',
   },
   {
     title: 'Content Creation & Copywriting',
     description:
       'Craft compelling stories, blogs, and messaging that resonate with your audience and strengthen your brand voice. We blend creativity and strategy to turn words into results.',
-    image: '/V2.PNG',
+    image: '/V2.png',
   },
   {
     title: 'Search Engine Optimization',
@@ -40,25 +40,25 @@ const services = [
     title: 'Web Development',
     description:
       'Get sleek, responsive websites and landing pages that are optimized for user experience and conversion. Designed to not just look good, but convert effortlessly.',
-    image: '/V5.PNG',
+    image: '/V5.png',
   },
   {
     title: 'Video Production',
     description:
       'Captivate your audience with scroll stopping visuals, animations, and video content tailored to your brand. Bring your ideas to life through powerful storytelling and visuals.',
-    image: '/V6.PNG',
+    image: '/V6.png',
   },
   {
     title: 'Content Marketing',
     description:
       'Deliver value with strategic content that builds authority, nurtures leads, and supports your overall digital strategy. We create content with purpose, built to engage and drive results.',
-    image: '/V7.PNG',
+    image: '/V7.png',
   },
   {
     title: 'Influencer Marketing',
     description:
       "Leverage the power of creators and influencers to expand your brand's reach and credibility in authentic ways. We connect you with voices your audience already trusts.",
-    image: '/V8.PNG',
+    image: '/V8.png',
   },
 ]
 

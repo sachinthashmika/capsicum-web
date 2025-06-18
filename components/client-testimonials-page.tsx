@@ -12,21 +12,21 @@ export default function ClientTestimonialsPage() {
         "The clarity and precision in your design perfectly reflect our educational mission. It’s refreshing to work with a team that truly understands our vision",
       name: "Lakshitha Prasad",
       designation: "Founder, English in 7 Boxes",
-      src: "/cl2.jpg",
+      src: "/Lakshitha.jpg",
     },
     {
       quote:
         "The seamless blend of innovation and elegance in your work has elevated our digital presence and operational flow. It’s exactly what we needed to grow with confidence.",
       name: "Indeevari Wijerathne",
       designation: "Executive Director, Sapphire Luxury Aesthetics",
-      src: "/cl1.jpg",
+      src: "/Indi.jpg",
     },
     {
       quote:
         "Capsicum’s innovative yet elegant approach has transformed our digital presence and operations, exactly what we needed to grow confidently.",
       name: "Prem Durairajah",
       designation: "Director - Elegance Wellness Retreat",
-      src: "/cl3.jpg",
+      src: "/Prem.jpg",
     },
     
     
