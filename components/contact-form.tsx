@@ -32,7 +32,7 @@ export default function Contact() {
                 }}
               ></div>
               
-              {/* Dark overlay for better text readability */}
+              {/* Dark overlay */}
               <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-black/60"></div>
 
               <div className="relative z-10">

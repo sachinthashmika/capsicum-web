@@ -7,7 +7,7 @@ import Image from "next/image";
 export default function SolarSystemOrbitMobile() {
   const backgroundStyle: CSSProperties = {
     width: "100%",
-    height: "450px", // a bit taller for larger orbits and spacing
+    height: "450px", 
     position: "relative",
     overflow: "hidden",
   };
@@ -16,7 +16,7 @@ export default function SolarSystemOrbitMobile() {
     <div style={backgroundStyle} className="flex items-center justify-center">
       <div className="relative w-full max-w-md h-full max-h-md">
 
-        {/* Larger orbit rings with bigger gaps */}
+ 
         <OrbitRing radius={140} color="rgba(255, 0, 0, 0.3)" />
         <OrbitRing radius={100} color="rgba(255, 0, 0, 0.3)" />
         <OrbitRing radius={60} color="rgba(255, 0, 0, 0.3)" />

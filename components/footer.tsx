@@ -16,7 +16,7 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <div className="flex flex-col sm:flex-row sm:items-start sm:space-x-12 lg:space-x-20">
               
-              {/* Logo Section - always vertical stack, centered on all screens */}
+              {/* Logo Section */}
               <div className="flex flex-col items-center space-y-2 mb-6 sm:mb-0">
                 <Image
                   src="/logo.png"
@@ -43,7 +43,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Links Section – side-by-side on all screen sizes */}
+          {/* Links Section  */}
           <div className="col-span-1 lg:col-span-2 flex flex-row gap-x-6 w-full">
             {/* Quick Links */}
             <div className="space-y-4 w-1/2">

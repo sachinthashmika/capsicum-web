@@ -19,15 +19,14 @@ const Card = ({
     >
       {/* Neon Glow Lines (Top and Right) */}
       <div className="absolute inset-0 pointer-events-none z-10 rounded-3xl overflow-visible">
-  {/* Top Line */}
+ 
   <div className="absolute top-0 left-0 right-[20px] h-px bg-gradient-to-r from-transparent via-[#ff2d55] to-[#ff2d55]" />
   <div className="absolute top-0 left-0 right-[20px] h-[2px] bg-gradient-to-r from-transparent via-[#ff2d55] to-[#ff2d55] blur-sm opacity-60" />
 
-  {/* Right Line */}
   <div className="absolute top-[20px] bottom-0 right-0 w-px bg-gradient-to-b from-[#ff2d55] via-[#ff2d55] to-transparent" />
   <div className="absolute top-[20px] bottom-0 right-0 w-[2px] bg-gradient-to-b from-[#ff2d55] via-[#ff2d55] to-transparent blur-sm opacity-60" />
 
-  {/* Smooth Rounded Corner using SVG */}
+  
   <svg
   className="absolute top-0 right-0"
   width="20"
@@ -35,14 +34,14 @@ const Card = ({
   viewBox="0 0 20 20"
   fill="none"
 >
-  {/* Solid neon arc */}
+
   <path
     d="M0,0 A20,20 0 0,1 20,20"
     stroke="#ff2d55"
     strokeWidth="1"
     fill="none"
   />
-  {/* Glowing blurred arc */}
+ 
   <path
     d="M0,0 A20,20 0 0,1 20,20"
     stroke="#ff2d55"
@@ -105,27 +104,24 @@ export default function About() {
           </h1>
 
           <p className="text-gray-400 text-base md:text-lg font-light w-full lg:w-[50%] leading-relaxed">
-            At Capsicum Digital, we are more than just a digital agency.
-            We are your strategic creative partners, committed to delivering
-            innovative and impactful digital solutions. With a strong focus on
-            creativity and precision, we transform your brand’s vision into
-            engaging experiences.
+          Capsicum Digital is your strategic creative partner, committed to delivering innovative and impactful digital solutions. With a strong focus on creativity and precision, we transform your brand&apos;s vision into engaging experiences.
+          <br/>Together, let&apos;s build digital stories that captivate, inspire, and drive results.
           </p>
         </div>
 
         {/* Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
           <Card
-            title={<>Our <br /> Team</>}
+            title={<>Creative <br /> Minds</>}
             description="A passionate group of innovators, creatives, and marketers driving brand success through collaboration."
           />
           <Card
-            title={<>Our <br /> Vision</>}
-            description="To empower brands with cutting-edge digital strategies that foster growth and long-term success."
+            title={<>Digital <br /> Vision</>}
+            description="To empower brands with cutting edge digital strategies that foster growth and long term success."
           />
           <Card
-            title={<>Our <br /> Approach</>}
-            description="A results-driven approach combining creativity, technology, and data to craft tailored solutions."
+            title={<>Strategic <br /> Approach</>}
+            description="A results driven approach combining creativity, technology, and data to craft tailored solutions."
           />
         </div>
       </LayoutWrapper>

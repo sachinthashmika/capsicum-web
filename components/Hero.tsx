@@ -21,7 +21,7 @@ export default function Hero() {
           </h1>
 
           <p className="text-[var(--color-text-muted)] text-sm md:text-base">
-            From scroll-stopping social posts to high-converting campaigns, we do it all.
+            From scroll stopping social posts to high converting campaigns, we do it all.
           </p>
 
           <div className="flex justify-center md:justify-start">

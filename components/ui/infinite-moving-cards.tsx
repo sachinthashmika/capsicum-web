@@ -52,7 +52,7 @@ export const InfiniteMovingCards = ({
       <ul
         ref={scrollerRef}
         className={cn(
-          "flex w-max min-w-full shrink-0 flex-nowrap gap-8 py-4", // bigger gap
+          "flex w-max min-w-full shrink-0 flex-nowrap gap-8 py-4",
           start && "animate-scroll",
           pauseOnHover && "hover:[animation-play-state:paused]"
         )}
@@ -60,21 +60,54 @@ export const InfiniteMovingCards = ({
         {logos.map((logo, idx) => (
           <li
             key={idx}
-            className="relative w-[350px] max-w-full shrink-0 rounded-2xl border border-[#4B2022] bg-[#202020] px-8 py-6 md:w-[450px] overflow-hidden"
+            className="relative w-[350px] max-w-full shrink-0 rounded-2xl border border-[#4B2022] bg-[#000] px-8 py-6 md:w-[450px] overflow-hidden"
           >
             {/* Neon top and left borders with sharp + blur lines */}
             <div className="absolute inset-0 rounded-2xl pointer-events-none">
-              {/* Top border */}
-              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#ff2d55] to-[#ff2d55] opacity-100" />
-              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#ff2d55] to-[#ff2d55] blur-md opacity-60" />
+  {/* Top Line */}
+  <div className="absolute top-0 left-0 right-[20px] h-px bg-[#ff2d55]" />
+  <div className="absolute top-0 left-0 right-[20px] h-[2px] bg-[#ff2d55] blur-sm opacity-60" />
 
-              {/* Left border */}
-              <div className="absolute top-0 left-0 bottom-0 w-px bg-gradient-to-b from-[#ff2d55] via-[#ff2d55] to-transparent opacity-100" />
-              <div className="absolute top-0 left-0 bottom-0 w-[2px] bg-gradient-to-b from-[#ff2d55] via-[#ff2d55] to-transparent blur-md opacity-60" />
+  {/* Left Line */}
+  <div className="absolute top-[20px] bottom-0 left-0 w-px bg-[#ff2d55]" />
+  <div className="absolute top-[20px] bottom-0 left-0 w-[2px] bg-[#ff2d55] blur-sm opacity-60" />
 
-              {/* Top-left corner glow */}
-              <div className="absolute top-0 left-0 w-2 h-2 bg-[#ff2d55] rounded-full blur-md opacity-70" />
-            </div>
+  {/* Top-left smooth rounded corner (SVG) */}
+  <svg
+    className="absolute top-0 left-0"
+    width="20"
+    height="20"
+    viewBox="0 0 20 20"
+    fill="none"
+  >
+    {/* Solid neon arc */}
+    <path
+      d="M20,0 A20,20 0 0,0 0,20"
+      stroke="#ff2d55"
+      strokeWidth="1"
+      fill="none"
+    />
+    {/* Blurred glowing arc */}
+    <path
+      d="M20,0 A20,20 0 0,0 0,20"
+      stroke="#ff2d55"
+      strokeWidth="3"
+      opacity="0.4"
+      filter="url(#glow)"
+      fill="none"
+    />
+    <defs>
+      <filter id="glow">
+        <feGaussianBlur stdDeviation="2" result="coloredBlur" />
+        <feMerge>
+          <feMergeNode in="coloredBlur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+    </defs>
+  </svg>
+</div>
+
 
             {/* Logo */}
             <div className="flex items-center justify-center h-full">
