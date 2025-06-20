@@ -19,14 +19,14 @@ export default function ClientTestimonialsPage() {
         "The seamless blend of innovation and elegance in your work has elevated our digital presence and operational flow. It’s exactly what we needed to grow with confidence.",
       name: "Indeevari Wijerathne",
       designation: "Executive Director, Sapphire Luxury Aesthetics",
-      src: "/Indi.jpg",
+      src: "/indi.JPG",
     },
     {
       quote:
         "Capsicum’s innovative yet elegant approach has transformed our digital presence and operations, exactly what we needed to grow confidently.",
       name: "Prem Durairajah",
       designation: "Director - Elegance Wellness Retreat",
-      src: "/Prem.jpg",
+      src: "/prem.JPG",
     },
     
     
@@ -34,7 +34,7 @@ export default function ClientTestimonialsPage() {
   ];
 
   return (
-    <div className="relative bg-[#262626] text-white overflow-hidden">
+    <div id="clients" className="relative bg-[#262626] text-white overflow-hidden">
       {/* Background radial gradient overlay */}
       <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_bottom_left,_rgba(75,32,34,0.6)_0%,_#262626_70%)] pointer-events-none" />
 

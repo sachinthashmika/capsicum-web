@@ -95,22 +95,33 @@ const Card = ({
 
 export default function About() {
   return (
-    <section className="relative w-full h-auto md:h-[calc(100vh-80px)] bg-gradient-to-tr from-[var(--color-dark-bg)] via-[var(--color-dark-bg)] to-[var(--color-dark-gradient)] text-white overflow-hidden">
-      <LayoutWrapper className="h-full flex flex-col justify-center gap-16 py-16 md:py-20">
+    <section
+  id="about"
+  className="relative w-full bg-gradient-to-tr from-[var(--color-dark-bg)] via-[var(--color-dark-bg)] to-[var(--color-dark-gradient)] text-white overflow-hidden scroll-mt-[100px] py-16 md:py-20"
+>
+
+
+
+
+
+      <LayoutWrapper className="h-full flex flex-col justify-start gap-16 py-16 md:py-20" >
         {/* Heading and Paragraph */}
-        <div className="flex flex-col lg:flex-row items-start gap-8 md:gap-12">
+        <div className="flex flex-col lg:flex-row items-start gap-8 md:gap-12 w-full">
+
           <h1 className="text-[28px] sm:text-[32px] md:text-[48px] leading-tight font-extrabold tracking-tight w-full lg:w-[40%] text-center lg:text-left">
             GET TO KNOW <br /> CAPSICUM
           </h1>
 
-          <p className="text-gray-400 text-base md:text-lg font-light w-full lg:w-[50%] leading-relaxed">
+          <p className="text-gray-400 text-base md:text-lg font-light w-full lg:w-[50%] max-w-2xl leading-relaxed">
+
           Capsicum Digital is your strategic creative partner, committed to delivering innovative and impactful digital solutions. With a strong focus on creativity and precision, we transform your brand&apos;s vision into engaging experiences.
           <br/>Together, let&apos;s build digital stories that captivate, inspire, and drive results.
           </p>
         </div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10 w-full max-w-6xl mx-auto px-4">
+
           <Card
             title={<>Creative <br /> Minds</>}
             description="A passionate group of innovators, creatives, and marketers driving brand success through collaboration."

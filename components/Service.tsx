@@ -149,6 +149,7 @@ export default function Service() {
 
   return (
     <div
+    id="services"
       ref={serviceSectionRef}
       className="relative w-full bg-gradient-to-br from-[#262626] to-[#4b2022] text-white"
       style={{ minHeight: '100vh' }}
@@ -194,11 +195,11 @@ export default function Service() {
                 <Image
                   src={service.image}
                   alt={service.title}
-                  width={400}
-                  height={240}
-                  className="rounded-xl object-cover"
-                  draggable={false}
+                  width={600}
+                  height={320}
+                  className="rounded-xl object-cover max-w-[600px] w-full"
                 />
+
               </div>
             ))}
           </div>
@@ -220,12 +221,13 @@ export default function Service() {
             OUR SERVICES
           </h2>
             <div className="flex-grow" />
-            <div className="transition-all duration-500 ease-in-out -mt-30">
-              <h3 className="text-2xl font-semibold text-[#ff2d55] mb-4">
-                {services[activeIndex].title}
-              </h3>
-              <p className="text-[17px] text-[#d9d9d9]">{services[activeIndex].description}</p>
-            </div>
+            <div className="transition-all duration-500 ease-in-out -mt-30 max-w-xl">
+  <h3 className="text-2xl font-semibold text-[#ff2d55] mb-4">
+    {services[activeIndex].title}
+  </h3>
+  <p className="text-[17px] text-[#d9d9d9]">{services[activeIndex].description}</p>
+</div>
+
             <div className="flex-grow" />
           </div>
 

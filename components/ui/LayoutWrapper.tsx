@@ -8,8 +8,11 @@ interface LayoutWrapperProps {
 
 export default function LayoutWrapper({ children, className = "" }: LayoutWrapperProps) {
   return (
-    <div className={cn("w-full max-w-7xl mx-auto px-4 md:px-10", className)}>
+    <div className={cn("w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8", className)}>
+
+
       {children}
     </div>
   );
 }
+

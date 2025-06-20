@@ -10,7 +10,12 @@ import Image from "next/image"
 export default function Contact() {
   return (
     <LayoutWrapper>
-      <section className="bg-dark-bg py-16 px-4">
+      <section
+  id="contact"
+  className="bg-dark-bg pt-16 pb-2 px-4 scroll-mt-10"
+>
+
+
         <h1 className="text-[28px] sm:text-[32px] md:text-[48px] leading-tight font-extrabold tracking-tight uppercase text-center text-white">
           CONTACT US
         </h1>
