@@ -612,3 +612,11 @@ body {
 .scrollbar-none::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
 }
+
+/*Bar Chart*/
+.shine {
+  animation: shineMove 2.5s infinite;
+  filter: blur(1px);
+  opacity: 0.6;
+}
+

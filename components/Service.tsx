@@ -39,7 +39,7 @@ const services = [
   {
     title: 'Web Development',
     description:
-      'Get sleek, responsive websites and landing pages that are optimized for user experience and conversion. Designed to not just look good, but convert effortlessly.',
+      'Get sleek, responsive websites and landing pages that are optimized for user experience and conversion. Designed to not just look good, but convert effortlessly. Experience it with Capsicum Digital',
     image: '/V5.png',
   },
   {
@@ -69,15 +69,18 @@ export default function Service() {
   const horizontalScrollRef = useRef<HTMLDivElement>(null)
   const [isInView, setIsInView] = useState(false)
 
+  // Scroll exactly one card width + gap on arrow click
   const scrollLeft = () => {
     if (horizontalScrollRef.current) {
-      horizontalScrollRef.current.scrollBy({ left: -300, behavior: 'smooth' })
+      const cardWidth = horizontalScrollRef.current.firstElementChild?.clientWidth ?? 300
+      horizontalScrollRef.current.scrollBy({ left: -cardWidth - 32, behavior: 'smooth' })
     }
   }
 
   const scrollRight = () => {
     if (horizontalScrollRef.current) {
-      horizontalScrollRef.current.scrollBy({ left: 300, behavior: 'smooth' })
+      const cardWidth = horizontalScrollRef.current.firstElementChild?.clientWidth ?? 300
+      horizontalScrollRef.current.scrollBy({ left: cardWidth + 32, behavior: 'smooth' })
     }
   }
 
@@ -133,7 +136,8 @@ export default function Service() {
     const handleScroll = () => {
       const scrollLeft = horizontalScrollRef.current!.scrollLeft
       const childWidth = horizontalScrollRef.current!.firstElementChild?.clientWidth || 1
-      const newIndex = Math.round(scrollLeft / childWidth)
+      const gap = 32 // space-x-8 = 2rem = 32px gap
+      const newIndex = Math.round(scrollLeft / (childWidth + gap))
       if (newIndex !== activeIndex) {
         setActiveIndex(newIndex)
       }
@@ -149,7 +153,7 @@ export default function Service() {
 
   return (
     <div
-    id="services"
+      id="services"
       ref={serviceSectionRef}
       className="relative w-full bg-gradient-to-br from-[#262626] to-[#4b2022] text-white"
       style={{ minHeight: '100vh' }}
@@ -157,13 +161,10 @@ export default function Service() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 py-24">
         {/* MOBILE VIEW: Sticky heading + content */}
         <div className="md:hidden">
-          {/* Our Services heading outside the gray box */}
           <h2 className="sticky top-0 z-20 bg-transparent p-4 text-[28px] sm:text-[32px] leading-tight font-extrabold tracking-tight mb-4 text-white">
             OUR SERVICES
           </h2>
-
-          {/* Content with gray background box */}
-          <div className="sticky top-[3.5rem] z-20 bg-[#262626] p-4">
+          <div className="sticky top-[3.5rem] z-20 bg-black/60 backdrop-blur-md p-8 rounded-xl shadow-lg">
             <h3 className="text-lg font-semibold text-[#ff2d55] mb-2">
               {services[activeIndex].title}
             </h3>
@@ -172,7 +173,7 @@ export default function Service() {
         </div>
 
         {/* MOBILE VIEW: Horizontal scroll with arrows */}
-        <div className="md:hidden relative py-4">
+        <div className="md:hidden relative pt-20 pb-4">
           {/* Left Arrow */}
           <button
             onClick={scrollLeft}
@@ -181,28 +182,35 @@ export default function Service() {
             <ChevronLeft className="h-5 w-5 text-white" />
           </button>
 
-          {/* Scrollable Image Row */}
-          <div
-            ref={horizontalScrollRef}
-            className="flex overflow-x-auto space-x-4 px-8 scrollbar-none"
-            style={{ scrollSnapType: 'x mandatory' }}
-          >
-            {services.map((service, index) => (
-              <div
-                key={index}
-                className="flex-shrink-0 w-[80vw] max-w-xs scroll-snap-align-center rounded-xl overflow-hidden relative"
-              >
-                <Image
-                  src={service.image}
-                  alt={service.title}
-                  width={600}
-                  height={320}
-                  className="rounded-xl object-cover max-w-[600px] w-full"
-                />
+         {/* Scrollable Image Row */}
+<div
+  ref={horizontalScrollRef}
+  className="flex overflow-x-auto snap-x snap-mandatory space-x-8 px-12 pb-6 scrollbar-none scroll-smooth"
+  style={{ scrollPaddingLeft: '64px', scrollPaddingRight: '64px' }}
+>
+  {services.map((service, index) => {
+    const isActive = index === activeIndex
+    return (
+      <div
+        key={index}
+        className="snap-center flex-shrink-0 w-[90vw] sm:w-[85vw] rounded-2xl overflow-hidden transition-transform duration-300"
+        style={{
+          transform: isActive ? 'translateX(-40px)' : 'none',
+        }}
+      >
+        <Image
+          src={service.image}
+          alt={service.title}
+          width={600}
+          height={320}
+          className="w-full h-[230px] sm:h-[260px] object-cover rounded-2xl"
+        />
+      </div>
+    )
+  })}
+</div>
 
-              </div>
-            ))}
-          </div>
+
 
           {/* Right Arrow */}
           <button
@@ -213,21 +221,20 @@ export default function Service() {
           </button>
         </div>
 
-        {/* DESKTOP VIEW: Sticky left + vertical scroll right */}
+        {/* DESKTOP VIEW */}
         <div className="hidden md:grid md:grid-cols-[40%_60%] gap-x-16">
           {/* Sticky Text */}
           <div className="sticky top-32 self-start h-[80vh] flex flex-col z-10">
-          <h2 className="text-[28px] sm:text-[32px] md:text-[48px] leading-tight font-extrabold tracking-tight mb-8 text-white">
-            OUR SERVICES
-          </h2>
+            <h2 className="text-[28px] sm:text-[32px] md:text-[48px] leading-tight font-extrabold tracking-tight mb-8 text-white">
+              OUR SERVICES
+            </h2>
             <div className="flex-grow" />
             <div className="transition-all duration-500 ease-in-out -mt-30 max-w-xl">
-  <h3 className="text-2xl font-semibold text-[#ff2d55] mb-4">
-    {services[activeIndex].title}
-  </h3>
-  <p className="text-[17px] text-[#d9d9d9]">{services[activeIndex].description}</p>
-</div>
-
+              <h3 className="text-2xl font-semibold text-[#ff2d55] mb-4">
+                {services[activeIndex].title}
+              </h3>
+              <p className="text-[17px] text-[#d9d9d9]">{services[activeIndex].description}</p>
+            </div>
             <div className="flex-grow" />
           </div>
 

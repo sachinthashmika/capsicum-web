@@ -16,7 +16,7 @@ export default function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
 
-      const sections = ["home", "about", "services", "portfolio", "clients", "contact"];
+      const sections = ["home", "about", "services", "projects", "clients", "contact"];
       for (const id of sections) {
         const el = document.getElementById(id);
         if (el) {
@@ -74,8 +74,9 @@ export default function Navbar() {
           <ul className="hidden md:flex items-center gap-8 text-base text-[var(--color-text-light)]">
             <li><a href="#" className={navItemClass("home")}>Home</a></li>
             <li><a href="#about" className={navItemClass("about")}>About</a></li>
+            <li><a href="#projects" className={navItemClass("projects")}>Projects</a></li>
             <li><a href="#services" className={navItemClass("services")}>Services</a></li>
-            <li><a href="#portfolio" className={navItemClass("portfolio")}>Portfolio</a></li>
+           
             <li><a href="#clients" className={navItemClass("clients")}>Clients</a></li>
           </ul>
 
@@ -121,15 +122,16 @@ export default function Navbar() {
             </a>
           </li>
           <li>
+            <a href="#projects" onClick={() => setMobileOpen(false)} className={navItemClass("projects")}>
+              Projects
+            </a>
+          </li>
+          <li>
             <a href="#services" onClick={() => setMobileOpen(false)} className={navItemClass("services")}>
               Services
             </a>
           </li>
-          <li>
-            <a href="#portfolio" onClick={() => setMobileOpen(false)} className={navItemClass("portfolio")}>
-              Portfolio
-            </a>
-          </li>
+          
           <li>
             <a href="#clients" onClick={() => setMobileOpen(false)} className={navItemClass("clients")}>
               Clients

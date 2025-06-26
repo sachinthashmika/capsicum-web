@@ -5,6 +5,7 @@ import ClientTestimonialsPage from "@/components/client-testimonials-page";
 import ContactForm from "@/components/contact-form";
 import Footer from "@/components/footer";
 import Service from "@/components/Service";
+import Project from "@/components/Projects";
 
 export default function HomePage() {
   return (
@@ -12,7 +13,9 @@ export default function HomePage() {
       <Navbar />
       <Hero />
       <About />
+      <Project />
       <Service />
+     
       <ClientTestimonialsPage />
       <ContactForm />
       <Footer />
