@@ -4,7 +4,7 @@ import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards"
 import { AnimatedTestimonials } from "@/components/ui/animated-testimonials"
 
 export default function ClientTestimonialsPage() {
-  const clientLogos = ["/b1.png", "/b2.png", "/b3.png", "/b4.png", "/b5.png"]
+  const clientLogos = ["/b1.webp", "/b2.webp", "/b3.webp", "/b4.webp", "/b5.webp"]
 
   const testimonials = [
     {
@@ -51,7 +51,7 @@ export default function ClientTestimonialsPage() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="relative z-10 py-10 px-4">
+      <section id="testimonials" className="relative z-10 py-10 px-4">
         <div className="max-w-7xl mx-auto text-center mb-16">
           <h1 className="text-[28px] sm:text-[32px] md:text-[48px] leading-tight font-extrabold tracking-tight uppercase text-center mb-4">
             What Our Clients Say

@@ -57,7 +57,7 @@ export default function BellPepperOrbit() {
         {/* Center image */}
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
           <div className="w-32 h-32 rounded-full flex items-center justify-center">
-            <Image src="/icon.png" alt="Capsicum" width={100} height={100} />
+            <Image src="/icon.webp" alt="Capsicum" width={100} height={100} />
           </div>
         </div>
       </div>

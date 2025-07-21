@@ -84,7 +84,7 @@ export default function Navbar() {
         <LayoutWrapper className="flex items-center justify-between py-6 px-4 md:px-0">
           {/* Logo */}
           <div className="flex items-center gap-2">
-            <Image src="/logo.png" alt="Capsicum Logo" width={32} height={32} />
+            <Image src="/logo.webp" alt="Capsicum Logo" width={32} height={32} />
             <span className="text-white text-xl font-semibold">Capsicum</span>
           </div>
 

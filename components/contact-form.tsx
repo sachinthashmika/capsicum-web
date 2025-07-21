@@ -11,11 +11,9 @@ export default function Contact() {
   return (
     <LayoutWrapper>
       <section
-  id="contact"
-  className="bg-dark-bg pt-16 pb-2 px-4 scroll-mt-10"
->
-
-
+        id="contact"
+        className="bg-dark-bg pt-16 pb-2 px-4 scroll-mt-10"
+      >
         <h1 className="text-[28px] sm:text-[32px] md:text-[48px] leading-tight font-extrabold tracking-tight uppercase text-center text-white">
           CONTACT US
         </h1>
@@ -30,7 +28,7 @@ export default function Contact() {
               <div 
                 className="absolute inset-0 opacity-80"
                 style={{
-                  backgroundImage: "url('/contactbg.png')",
+                  backgroundImage: "url('/contactbg.webp')",
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                   backgroundRepeat: "no-repeat"
@@ -43,7 +41,7 @@ export default function Contact() {
               <div className="relative z-10">
                 <h2 className="text-4xl font-bold text-white mb-4">Contact Information</h2>
                 <p className="text-[#c9c9c9] text-base mb-12">
-                {"Let's connect and bring your vision to life."}
+                  {"Let's connect and bring your vision to life."}
                 </p>
 
                 <div className="space-y-8">
@@ -74,20 +72,36 @@ export default function Contact() {
 
                 {/* Social Media Icons */}
                 <div className="flex space-x-4 mt-16">
-                  {[Facebook, Instagram, Linkedin].map((Icon, i) => (
-                    <div
-                      key={i}
-                      className="w-12 h-12 border border-brand rounded-lg flex items-center justify-center hover:bg-brand transition-colors cursor-pointer bg-black bg-opacity-30 backdrop-blur-sm"
-                    >
-                      <Icon className="w-5 h-5 text-brand hover:text-white" />
-                    </div>
-                  ))}
+                  {/* Facebook */}
+                  <a
+                    href="https://www.facebook.com/share/14EjnoUJA6V/?mibextid=wwXIfr"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 border border-brand rounded-lg flex items-center justify-center hover:bg-brand transition-colors cursor-pointer bg-black bg-opacity-30 backdrop-blur-sm"
+                  >
+                    <Facebook className="w-5 h-5 text-brand hover:text-white" />
+                  </a>
+
+                  {/* Instagram */}
+                  <div className="w-12 h-12 border border-brand rounded-lg flex items-center justify-center hover:bg-brand transition-colors cursor-pointer bg-black bg-opacity-30 backdrop-blur-sm">
+                    <Instagram className="w-5 h-5 text-brand hover:text-white" />
+                  </div>
+
+                  {/* LinkedIn */}
+                  <a
+                    href="https://www.linkedin.com/company/capsicum-digital/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 border border-brand rounded-lg flex items-center justify-center hover:bg-brand transition-colors cursor-pointer bg-black bg-opacity-30 backdrop-blur-sm"
+                  >
+                    <Linkedin className="w-5 h-5 text-brand hover:text-white" />
+                  </a>
                 </div>
 
                 {/* Bell Pepper Icon - positioned like in UI */}
                 <div className="absolute -bottom-30 -right-20 w-48 h-56 overflow-hidden">
                   <Image
-                    src="/icon.png"
+                    src="/icon.webp"
                     alt="Bell Pepper Icon"
                     width={240}
                     height={288}

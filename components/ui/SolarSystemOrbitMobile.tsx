@@ -42,7 +42,7 @@ export default function SolarSystemOrbitMobile() {
         {/* Center image */}
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
           <div className="w-24 h-24 rounded-full flex items-center justify-center">
-            <Image src="/icon.png" alt="Capsicum" width={96} height={96} />
+            <Image src="/icon.webp" alt="Capsicum" width={96} height={96} />
           </div>
         </div>
       </div>

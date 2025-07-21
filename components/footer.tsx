@@ -5,7 +5,7 @@ import LayoutWrapper from "@/components/ui/LayoutWrapper"
 
 export default function Footer() {
   const quickLinks = ["Home", "Services", "Projects", "Contact"]
-  const otherLinks = ["About", "Client", "Testimonials"]
+  const otherLinks = ["About", "Clients", "Testimonials"]
 
   return (
     <footer className="bg-[#000000] text-white py-16">
@@ -19,7 +19,7 @@ export default function Footer() {
               {/* Logo Section */}
               <div className="flex flex-col items-center space-y-2 mb-6 sm:mb-0">
                 <Image
-                  src="/logo.png"
+                  src="/logo.webp"
                   alt="Capsicum Digital Logo"
                   width={60}
                   height={60}
@@ -36,14 +36,19 @@ export default function Footer() {
                   by insight and creativity
                 </p>
                 <div className="space-y-2">
-                  <div className="text-gray-300">+94 767962610</div>
-                  <div className="text-gray-300 underline">info@capsicum.lk</div>
+                  <a href="tel:+94767962610" className="text-gray-300 hover:text-brand transition-colors inline-block">
+                    +94 767962610
+                  </a>
+                  <br />
+                  <a href="mailto:info@capsicum.lk" className="text-gray-300 underline hover:text-brand transition-colors inline-block">
+                    info@capsicum.lk
+                  </a>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Links Section  */}
+          {/* Links Section */}
           <div className="col-span-1 lg:col-span-2 flex flex-row gap-x-6 w-full">
             {/* Quick Links */}
             <div className="space-y-4 w-1/2">
@@ -52,7 +57,7 @@ export default function Footer() {
                 {quickLinks.map((link, index) => (
                   <li key={index}>
                     <a
-                      href={`/${link.toLowerCase().replace(" ", "-")}`}
+                      href={`#${link.toLowerCase().replace(" ", "")}`}
                       className="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer"
                     >
                       {link}
@@ -69,7 +74,7 @@ export default function Footer() {
                 {otherLinks.map((link, index) => (
                   <li key={index}>
                     <a
-                      href={`/${link.toLowerCase().replace(" ", "-")}`}
+                      href={`#${link.toLowerCase().replace(" ", "")}`}
                       className="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer"
                     >
                       {link}
@@ -85,3 +90,4 @@ export default function Footer() {
     </footer>
   )
 }
+

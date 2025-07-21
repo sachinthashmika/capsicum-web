@@ -4,10 +4,10 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 
 const icons = [
-  { src: '/facebook.png', alt: 'Facebook', x: 0, y: 100 },
-  { src: '/tiktok.png', alt: 'TikTok', x: 90, y: 50 },
-  { src: '/youtube.png', alt: 'YouTube', x: 180, y: 120 },
-  { src: '/instagram.png', alt: 'Instagram', x: 270, y: 60 },
+  { src: '/facebook.webp', alt: 'Facebook', x: 0, y: 100 },
+  { src: '/tiktok.webp', alt: 'TikTok', x: 90, y: 50 },
+  { src: '/youtube.webp', alt: 'YouTube', x: 180, y: 120 },
+  { src: '/instagram.webp', alt: 'Instagram', x: 270, y: 60 },
 ]
 
 export default function FloatingIcons() {

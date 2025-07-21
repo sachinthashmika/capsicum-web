@@ -2,7 +2,7 @@ export const clients = [
   {
     id: 1,
     name: "iPhone Paradise",
-    logo: "/b1.png",
+    logo: "/b1.webp",
     data: [
       
       { metric: "Impressions", value: 18000 },
@@ -15,7 +15,7 @@ export const clients = [
   {
     id: 2,
     name: "English in Seven Boxes",
-    logo: "/b5.png",
+    logo: "/b5.webp",
     data: [
      
       { metric: "Impressions", value: 23000 },
@@ -28,7 +28,7 @@ export const clients = [
   {
     id: 3,
     name: "Elegance Wellness",
-    logo: "/b2.png",
+    logo: "/b2.webp",
     data: [
       
       { metric: "Impressions", value: 16000 },
@@ -41,7 +41,7 @@ export const clients = [
   {
     id: 4,
     name: "Scandinavian Scholastic Center",
-    logo: "/b3.png",
+    logo: "/b3.webp",
     data: [
      
       { metric: "Impressions", value: 19000 },
@@ -54,7 +54,7 @@ export const clients = [
   {
     id: 5,
     name: "Sapphire",
-    logo: "/b4.png",
+    logo: "/b4.webp",
     data: [
       
       { metric: "Impressions", value: 25000 },
