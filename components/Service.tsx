@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
-import { ChevronLeft, ChevronRight } from "lucide-react"
 import FloatingIcons from "./ui/FloatingIcon"
 
 const services = [
@@ -66,29 +65,67 @@ export default function Service() {
   const [activeIndex, setActiveIndex] = useState(0)
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([])
   const serviceSectionRef = useRef<HTMLDivElement>(null)
-  const horizontalScrollRef = useRef<HTMLDivElement>(null)
+  const imageRef = useRef<HTMLDivElement>(null)
   const [showFloatingIcons, setShowFloatingIcons] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
 
-  // Enhanced scroll functions to center the image
-  const scrollLeft = () => {
-    if (horizontalScrollRef.current) {
-      const newIndex = Math.max(0, activeIndex - 1)
-      const cardWidth = horizontalScrollRef.current.firstElementChild?.clientWidth ?? 300
-      const gap = 32
-      const scrollPosition = newIndex * (cardWidth + gap)
-      horizontalScrollRef.current.scrollTo({ left: scrollPosition, behavior: "smooth" })
-    }
-  }
+  useEffect(() => {
+    const media = window.matchMedia('(max-width: 767px)')
+    setIsMobile(media.matches)
+    const listener = (e: MediaQueryListEvent) => setIsMobile(e.matches)
+    media.addListener(listener)
+    return () => media.removeListener(listener)
+  }, [])
 
-  const scrollRight = () => {
-    if (horizontalScrollRef.current) {
-      const newIndex = Math.min(services.length - 1, activeIndex + 1)
-      const cardWidth = horizontalScrollRef.current.firstElementChild?.clientWidth ?? 300
-      const gap = 32
-      const scrollPosition = newIndex * (cardWidth + gap)
-      horizontalScrollRef.current.scrollTo({ left: scrollPosition, behavior: "smooth" })
+  // Timer for automatic content change in mobile
+  useEffect(() => {
+    if (!isMobile) return
+    const timer = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % services.length)
+    }, 5000)
+    return () => clearInterval(timer)
+  }, [isMobile])
+
+  // Swipe detection for mobile
+  useEffect(() => {
+    const el = imageRef.current
+    if (!el || !isMobile) return
+
+    let touchStartX = 0
+    let touchMoved = false
+
+    const handleTouchStart = (e: TouchEvent) => {
+      touchStartX = e.touches[0].clientX
+      touchMoved = false
     }
-  }
+
+    const handleTouchMove = (e: TouchEvent) => {
+      touchMoved = true
+    }
+
+    const handleTouchEnd = (e: TouchEvent) => {
+      if (!touchMoved) return
+      const touchEndX = e.changedTouches[0].clientX
+      const delta = touchStartX - touchEndX
+      if (Math.abs(delta) > 50) { // Minimum swipe distance
+        if (delta > 0) {
+          setActiveIndex((prev) => (prev + 1) % services.length) // Swipe left -> next
+        } else {
+          setActiveIndex((prev) => (prev - 1 + services.length) % services.length) // Swipe right -> previous
+        }
+      }
+    }
+
+    el.addEventListener('touchstart', handleTouchStart, { passive: true })
+    el.addEventListener('touchmove', handleTouchMove, { passive: true })
+    el.addEventListener('touchend', handleTouchEnd, { passive: true })
+
+    return () => {
+      el.removeEventListener('touchstart', handleTouchStart)
+      el.removeEventListener('touchmove', handleTouchMove)
+      el.removeEventListener('touchend', handleTouchEnd)
+    }
+  }, [isMobile])
 
   // Desktop: update index based on which vertical section is in view
   useEffect(() => {
@@ -158,28 +195,6 @@ export default function Service() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [activeIndex])
 
-  // Mobile: update activeIndex based on scroll position
-  useEffect(() => {
-    if (!horizontalScrollRef.current) return
-
-    const handleScroll = () => {
-      const scrollLeft = horizontalScrollRef.current!.scrollLeft
-      const childWidth = horizontalScrollRef.current!.firstElementChild?.clientWidth || 1
-      const gap = 32 // space-x-8 = 2rem = 32px gap
-      const newIndex = Math.round(scrollLeft / (childWidth + gap))
-      if (newIndex !== activeIndex) {
-        setActiveIndex(newIndex)
-      }
-    }
-
-    const scrollContainer = horizontalScrollRef.current
-    scrollContainer.addEventListener("scroll", handleScroll, { passive: true })
-
-    return () => {
-      scrollContainer.removeEventListener("scroll", handleScroll)
-    }
-  }, [activeIndex])
-
   return (
     <div
       id="services"
@@ -219,51 +234,17 @@ export default function Service() {
           </div>
         </div>
 
-        {/* MOBILE VIEW: Horizontal scroll with arrows */}
-        <div className="md:hidden relative pt-20 pb-4">
-          {/* Left Arrow */}
-          <button
-            onClick={scrollLeft}
-            className="absolute left-2 top-1/2 z-10 -translate-y-1/2 bg-[#4B2022] hover:bg-[#5B2528] p-2 rounded-full"
-          >
-            <ChevronLeft className="h-5 w-5 text-white" />
-          </button>
-
-          {/* Scrollable Image Row */}
-          <div
-            ref={horizontalScrollRef}
-            className="flex overflow-x-auto snap-x snap-mandatory space-x-8 px-12 pb-6 scrollbar-none scroll-smooth"
-            style={{ scrollPaddingLeft: "64px", scrollPaddingRight: "64px" }}
-          >
-            {services.map((service, index) => {
-              const isActive = index === activeIndex
-              return (
-                <div
-                  key={index}
-                  className="snap-center flex-shrink-0 w-[90vw] sm:w-[85vw] rounded-2xl overflow-hidden transition-transform duration-300"
-                  style={{
-                    transform: isActive ? "translateX(-40px)" : "none",
-                  }}
-                >
-                  <Image
-                    src={service.image || "/placeholder.svg"}
-                    alt={service.title}
-                    width={600}
-                    height={320}
-                    className="w-full h-[230px] sm:h-[260px] object-cover rounded-2xl"
-                  />
-                </div>
-              )
-            })}
+        {/* MOBILE VIEW: Fixed single image with swipe support */}
+        <div className="md:hidden pt-20 pb-4">
+          <div ref={imageRef} className="mx-4 rounded-2xl overflow-hidden touch-pan-x">
+            <Image
+              src="/V0-min.webp"
+              alt="Fixed Service Image"
+              width={600}
+              height={320}
+              className="w-full h-[230px] sm:h-[260px] object-cover rounded-2xl"
+            />
           </div>
-
-          {/* Right Arrow */}
-          <button
-            onClick={scrollRight}
-            className="absolute right-2 top-1/2 z-10 -translate-y-1/2 bg-[#4B2022] hover:bg-[#5B2528] p-2 rounded-full"
-          >
-            <ChevronRight className="h-5 w-5 text-white" />
-          </button>
         </div>
 
         {/* DESKTOP VIEW */}
@@ -274,7 +255,7 @@ export default function Service() {
               OUR SERVICES
             </h2>
             <div className="flex-grow" />
-            {/* Desktop Sticky Text Content - Replace the existing div */}
+            {/* Desktop Sticky Text Content */}
             <div className="transition-all duration-500 ease-in-out -mt-30 max-w-xl">
               <h3
                 key={`desktop-title-${activeIndex}`}
@@ -333,6 +314,10 @@ export default function Service() {
           }
         }
 
+        .animate-fade-in {
+          animation: fade-in 0.5s ease-out forwards;
+        }
+
         @keyframes fade-in-delay {
           from {
             opacity: 0;
@@ -342,10 +327,6 @@ export default function Service() {
             opacity: 1;
             transform: translateY(0);
           }
-        }
-
-        .animate-fade-in {
-          animation: fade-in 0.5s ease-out forwards;
         }
 
         .animate-fade-in-delay {

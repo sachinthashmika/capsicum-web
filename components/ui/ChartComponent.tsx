@@ -27,11 +27,9 @@ export const ChartComponent = ({ data }: ChartProps) => {
     return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
 
-  // Animate bars on data change
+  // Update data smoothly (no reset to 0, just transition)
   useEffect(() => {
-    setAnimatedData(data.map(item => ({ ...item, value: 0 })));
-    const timeout = setTimeout(() => setAnimatedData(data), 100);
-    return () => clearTimeout(timeout);
+    setAnimatedData(data);
   }, [data]);
 
   return (
@@ -88,7 +86,7 @@ export const ChartComponent = ({ data }: ChartProps) => {
             </linearGradient>
           </defs>
 
-          {/* Bars with animation + glass effect + shine */}
+          {/* Bars with smooth transitions */}
           <Bar
             dataKey="value"
             radius={[10, 10, 0, 0]}
@@ -99,6 +97,7 @@ export const ChartComponent = ({ data }: ChartProps) => {
             strokeWidth={1}
             isAnimationActive={true}
             animationDuration={800}
+            animationEasing="ease-in-out"
           >
             {animatedData.map((_, index) => (
               <Cell key={`cell-${index}`} />
